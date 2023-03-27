@@ -76,8 +76,6 @@ for repo_id in fixed_repo:
         bug_trace = fixed_json[0]['bug_trace']
         for trace in bug_trace:
             filename = trace['filename']
-            filename = filename.replace("dataserver145/genomics/Miaomiao/py_repo/", "")
-            filename = filename.replace("/data1/zhipengxue/", "")
             if filename.split("/")[0] != "repository":
                 continue
             filename = f'tmp_{filename}'

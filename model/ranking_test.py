@@ -196,7 +196,7 @@ def set_seed(seed=42):
 def val(args, model, tokenizer):
     """ Test the model """
     #get testing dataset
-    test_dataset = WarningDataset(tokenizer, args, f"{args.data_file}/warning_true_test_old.txt", f"{args.data_file}/warning_false_test_old.txt")
+    test_dataset = WarningDataset(tokenizer, args, f"{args.data_file}/warning_true_test.txt", f"{args.data_file}/warning_false_test.txt")
     test_dataloader = DataLoader(test_dataset, batch_size=64, shuffle = False)
     
     model.eval()
@@ -313,7 +313,7 @@ def val(args, model, tokenizer):
 def identify_val(args, model, tokenizer):
     """ Test the model """
     #get testing dataset
-    test_dataset = WarningDataset(tokenizer, args, f"{args.data_file}/warning_true_test_old.txt", f"{args.data_file}/warning_false_test_old.txt")
+    test_dataset = WarningDataset(tokenizer, args, f"{args.data_file}/warning_true_test.txt", f"{args.data_file}/warning_false_test.txt")
     test_sampler = RandomSampler(test_dataset)
     test_dataloader = DataLoader(test_dataset, sampler=test_sampler, batch_size=args.train_batch_size,num_workers=4)
     
@@ -423,14 +423,14 @@ def main():
     parser = argparse.ArgumentParser()
 
     ## Required parameters
-    parser.add_argument("--data_file", default="/home/zhipengxue/warning_elimination/dataset", type=str, 
+    parser.add_argument("--data_file", default="/home/warning_elimination/dataset", type=str, 
                         help="The input training data file.")
-    parser.add_argument("--output_dir", default="/data1/zhipengxue/model_rank", type=str,
+    parser.add_argument("--output_dir", default="/data1/model_rank", type=str,
                         help="The output directory where the model predictions and checkpoints will be written.")
     parser.add_argument("--num_reload", default=12, type=int,
                         help="Reload num.")#11#5#8#12MRR
     
-    parser.add_argument("--model_name_or_path", default="/home/zhipengxue/unixcoder-base", type=str,
+    parser.add_argument("--model_name_or_path", default="/home/unixcoder-base", type=str,
                         help="The model checkpoint for weights initialization.")
     parser.add_argument("--config_name", default="", type=str,
                         help="Optional pretrained config name or path if not the same as model_name_or_path")

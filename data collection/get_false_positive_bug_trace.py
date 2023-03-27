@@ -99,8 +99,6 @@ for repo_id in repo_warning_dict:
             bug_trace = false_positive['bug_trace']
             for trace in bug_trace:
                 filename = trace['filename']
-                filename = filename.replace("dataserver145/genomics/Miaomiao/py_repo/", "")
-                filename = filename.replace("/data1/zhipengxue/", "")
                 if filename.split("/")[0] != "repository":
                     continue
                 filename = f'tmp_{filename}'
